@@ -5,8 +5,6 @@ public class Crop
     public CropStatus Status { get; }
     public string? Message { get; }
 
-    // public static Crop Void => CropStatus.Ok;
-
     public Crop()
     {
         Status = CropStatus.Ok;
@@ -26,4 +24,4 @@ public class Crop
     }
 
     public static implicit operator Crop(CropStatus status) => new(status);
-};
+}

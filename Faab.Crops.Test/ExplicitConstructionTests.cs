@@ -96,24 +96,4 @@ public class ExplicitConstructionTests
         Assert.AreEqual(CropStatus.Ok, crop.Status);
         Assert.Null(crop.Message);
     }
-
-    [Theory]
-    public void CropWithReferenceTypeGivenNoValueShouldHaveNullAsValue(CropStatus status)
-    {
-        // Act
-        var crop = new Crop<IAnyInterface>(status);
-
-        // Assert
-        Assert.Null(crop.Value);
-    }
-
-    [Theory]
-    public void CropWithValueTypeGivenNoValueShouldHaveDefaultAsValue(CropStatus status)
-    {
-        // Act
-        var crop = new Crop<int>(status);
-
-        // Assert
-        Assert.AreEqual(default(int), crop.Value);
-    }
 }
