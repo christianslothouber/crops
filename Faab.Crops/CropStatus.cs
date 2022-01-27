@@ -11,9 +11,7 @@ public enum CropStatus
     NotFound = 404,
     Timeout = 408,
     Conflict = 409,
-    Teapot = 418,
-    TooManyRequests = 429,
+    TeaPot = 418,
     Error = 500,
     NotImplemented = 501,
-    NotAvailable = 503,
 }
