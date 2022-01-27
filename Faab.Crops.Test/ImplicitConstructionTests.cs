@@ -18,6 +18,21 @@ public class ImplicitConstructionTests
         Assert.Null(crop.Value);
         Assert.Null(crop.Message);
     }
+    
+    [Theory]
+    public void ImplicitConstructionValueCropGivenStatusAndMessageShouldHaveStatusAndMessageButNoValue(CropStatus status)
+    {
+        // Arrange
+        const string message = "This is the status message";
+        
+        // Act
+        Crop<IAnyInterface> crop = (status, message);
+
+        // Assert
+        Assert.AreEqual(status, crop.Status);
+        Assert.AreEqual(message, crop.Message);
+        Assert.Null(crop.Value);
+    }
 
     [Theory]
     public void ImplicitConstructionValueCropGivenValueShouldHaveOkStatusAndValueButNoMessage([Random(3)] int value)
@@ -40,5 +55,19 @@ public class ImplicitConstructionTests
         // Assert
         Assert.AreEqual(status, crop.Status);
         Assert.Null(crop.Message);
+    }
+    
+    [Theory]
+    public void ImplicitConstructionVoidCropGivenStatusAndMessageShouldHaveStatusAndMessage(CropStatus status)
+    {
+        // Arrange
+        const string message = "This is the status message";
+
+        // Act
+        Crop crop = (status, message);
+
+        // Assert
+        Assert.AreEqual(status, crop.Status);
+        Assert.AreEqual(message, crop.Message);
     }
 }

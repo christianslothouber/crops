@@ -26,4 +26,5 @@ public class Crop<T> : Crop
 
     public static implicit operator Crop<T>(T value) => new(value);
     public static implicit operator Crop<T>(CropStatus status) => new(status);
+    public static implicit operator Crop<T>((CropStatus status, string message) pair) => new(pair.status, pair.message);
 }

@@ -24,4 +24,5 @@ public class Crop
     }
 
     public static implicit operator Crop(CropStatus status) => new(status);
+    public static implicit operator Crop((CropStatus status, string message) pair) => new(pair.status, pair.message);
 }
