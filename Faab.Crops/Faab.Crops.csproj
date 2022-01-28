@@ -4,6 +4,14 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Crops</Title>
+        <Authors>Christian Slothouber</Authors>
+        <Description>An alternative way of handling errors in code. Using HTTP-like status codes to indicate validity and why.</Description>
+        <Copyright>Copyright (c) Christian Slothouber 2022</Copyright>
+        <RepositoryUrl>https://github.com/christianslothouber/crops</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
 </Project>
