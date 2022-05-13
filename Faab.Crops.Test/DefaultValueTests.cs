@@ -5,8 +5,6 @@ namespace Faab.Crops.Test;
 [TestFixture]
 public class DefaultValueTests
 {
-    private interface IAnyInterface {}
-
     [Theory]
     public void CropWithReferenceTypeGivenNoValueShouldHaveNullAsValue(CropStatus status)
     {

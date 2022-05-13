@@ -22,7 +22,7 @@ public class OkNotOkTests
         };
 
         _invalidStatuses = Enum.GetValues<CropStatus>()
-                               .Where(s => !_validStatuses.Contains(s))
+                               .Except(_validStatuses)
                                .ToList();
     }
 

@@ -5,8 +5,6 @@ namespace Faab.Crops.Test;
 [TestFixture]
 public class ImplicitConstructionTests
 {
-    private interface IAnyInterface {}
-
     [Theory]
     public void ImplicitConstructionValueCropGivenStatusShouldHaveStatusButNoValueOrMessage(CropStatus status)
     {
@@ -18,13 +16,14 @@ public class ImplicitConstructionTests
         Assert.Null(crop.Value);
         Assert.Null(crop.Message);
     }
-    
+
     [Theory]
-    public void ImplicitConstructionValueCropGivenStatusAndMessageShouldHaveStatusAndMessageButNoValue(CropStatus status)
+    public void ImplicitConstructionValueCropGivenStatusAndMessageShouldHaveStatusAndMessageButNoValue(
+        CropStatus status)
     {
         // Arrange
         const string message = "This is the status message";
-        
+
         // Act
         Crop<IAnyInterface> crop = (status, message);
 
@@ -56,7 +55,7 @@ public class ImplicitConstructionTests
         Assert.AreEqual(status, crop.Status);
         Assert.Null(crop.Message);
     }
-    
+
     [Theory]
     public void ImplicitConstructionVoidCropGivenStatusAndMessageShouldHaveStatusAndMessage(CropStatus status)
     {

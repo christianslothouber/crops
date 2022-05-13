@@ -5,8 +5,6 @@ namespace Faab.Crops.Test;
 [TestFixture]
 public class ExplicitConstructionTests
 {
-    private interface IAnyInterface {}
-
     [Theory]
     public void ExplicitConstructionValueCropGivenValueAndStatusShouldHaveValueAndStatusButNoMessage(
         CropStatus status,
@@ -32,7 +30,7 @@ public class ExplicitConstructionTests
         Assert.Null(crop.Value);
         Assert.Null(crop.Message);
     }
-    
+
     [Theory]
     public void ExplicitConstructionValueCropGivenValueShouldHaveOkStatusAndValueButNoMessage([Random(3)] int value)
     {

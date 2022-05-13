@@ -5,11 +5,6 @@ namespace Faab.Crops.Test;
 [TestFixture]
 public class MethodExampleTests
 {
-    private class Request
-    {
-        public int Value { get; set; }
-    }
-
     [Test]
     public void NotFoundExample([Random(1)] int value)
     {
@@ -38,16 +33,16 @@ public class MethodExampleTests
         const string message = "value is too small";
 
         // Arrange
-        Crop<int> Act(Request request)
+        Crop<int> Act(int input)
         {
-            if (request.Value < 10) return (CropStatus.BadRequest, message);
+            if (input < 10) return (CropStatus.BadRequest, message);
 
             return value;
         }
 
         // Act
-        var good = Act(new Request { Value = 20 });
-        var bad = Act(new Request { Value = 5 });
+        var good = Act(20);
+        var bad = Act(5);
 
         // Assert
         Assert.True(good.IsOk());
@@ -57,7 +52,7 @@ public class MethodExampleTests
         Assert.AreEqual(CropStatus.BadRequest, bad.Status);
         Assert.AreEqual(message, bad.Message);
     }
-    
+
     [Test]
     public void VoidCropExample()
     {
