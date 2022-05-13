@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace Faab.Crops.Test;
@@ -19,6 +20,30 @@ public class MethodExampleTests
         // Act
         var foundCrop = Act(true);
         var notFoundCrop = Act(false);
+
+        // Assert
+        Assert.True(foundCrop.IsOk());
+        Assert.AreEqual(value, foundCrop.Value);
+
+        Assert.True(notFoundCrop.IsNotOk());
+    }
+    
+    [Test]
+    public async Task AsyncNotFoundExample([Random(1)] int value)
+    {
+        // Arrange
+        async Task<Crop<int>> Act(bool found)
+        {
+            await Task.CompletedTask;
+            
+            if (found) return value;
+
+            return CropStatus.NotFound;
+        }
+
+        // Act
+        var foundCrop = await Act(true);
+        var notFoundCrop = await Act(false);
 
         // Assert
         Assert.True(foundCrop.IsOk());
@@ -67,6 +92,31 @@ public class MethodExampleTests
         // Act
         var good = Act(true);
         var bad = Act(false);
+
+        // Assert
+        Assert.True(good.IsOk());
+
+        Assert.True(bad.IsNotOk());
+        Assert.AreEqual(CropStatus.Timeout, bad.Status);
+    }
+    
+    
+    [Test]
+    public async Task AsyncVoidCropExample()
+    {
+        // Arrange
+        async Task<Crop> Act(bool success)
+        {
+            await Task.CompletedTask;
+            
+            if (success) return new Crop();
+
+            return CropStatus.Timeout;
+        }
+
+        // Act
+        var good = await Act(true);
+        var bad = await Act(false);
 
         // Assert
         Assert.True(good.IsOk());
