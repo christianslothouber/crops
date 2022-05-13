@@ -21,10 +21,10 @@ public class UseCaseExampleTests
         }
 
         // Act
-        var missingno = GetFirstGenerationPokemonStrength(0);
+        var missingno = GetFirstGenerationPokemonStrength(000);
         var absol = GetFirstGenerationPokemonStrength(359);
-        var charizard = GetFirstGenerationPokemonStrength(6);
-        var pikachu = GetFirstGenerationPokemonStrength(25);
+        var charizard = GetFirstGenerationPokemonStrength(006);
+        var pikachu = GetFirstGenerationPokemonStrength(025);
 
         // Assert
         Assert.AreEqual(CropStatus.BadRequest, missingno.Status);
